@@ -1,0 +1,78 @@
+{
+  "name": "react-express-boilerplate",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server/start.ts",
+  "scripts": {
+    "build": "rimraf dist && tsc -p .",
+    "dev": "npm-run-all server www",
+    "start": "node dist/start.js",
+    "server": "nodemon",
+    "www": "webpack-dev-server --mode development --hot",
+    "build:www": "rimraf dist/www && webpack --mode production",
+    "dev:server": "rimraf dist && npm run start:server",
+    "dev:www": "webpack-dev-server --mode development --hot",
+    "start:server": "tsc --outDir dist && nodemon --exec node dist/start.js"
+  },
+  "nodemonConfig": {
+    "env": {
+      "NODE_ENV": "development"
+    },
+    "ext": "json,ts",
+    "exec": "ts-node server/start.ts >> server.log",
+    "ignore": [
+      ".git",
+      ".idea",
+      "dist",
+      "node_modules",
+      "www"
+    ],
+    "restartable": "rs",
+    "verbose": false,
+    "watch": [
+      "server"
+    ]
+  },
+  "keywords": [
+    "express",
+    "react",
+    "typescript"
+  ],
+  "author": "Tomi Kaistila",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.7.2",
+    "@babel/plugin-proposal-class-properties": "^7.7.0",
+    "@babel/plugin-proposal-object-rest-spread": "^7.6.2",
+    "@babel/preset-env": "^7.7.1",
+    "@babel/preset-react": "^7.7.0",
+    "@babel/preset-typescript": "^7.7.2",
+    "@types/express": "^4.17.2",
+    "@types/node": "^12.12.7",
+    "babel-loader": "^8.0.6",
+    "css-loader": "^3.2.0",
+    "html-webpack-plugin": "^3.2.0",
+    "nodemon": "^1.19.4",
+    "pm2": "^4.1.2",
+    "rimraf": "^3.0.0",
+    "shelljs": "^0.8.3",
+    "style-loader": "^1.0.0",
+    "ts-node": "^8.4.1",
+    "tslint": "^5.20.1",
+    "tslint-immutable": "^6.0.1",
+    "typescript": "^3.7.2",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10",
+    "webpack-dev-server": "^3.9.0"
+  },
+  "dependencies": {
+    "@types/morgan": "^1.7.37",
+    "@types/react": "^16.9.11",
+    "@types/react-dom": "^16.9.4",
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "morgan": "^1.9.1",
+    "react": "^16.11.0",
+    "react-dom": "^16.11.0"
+  }
+}
